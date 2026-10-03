@@ -1,0 +1,12 @@
+# Virtual Environment (created by uv)
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Streamlit local settings
+.streamlit/
+
+# Environment variable files (for future API keys/passwords)
+.env
