@@ -10,3 +10,5 @@ __pycache__/
 
 # Environment variable files (for future API keys/passwords)
 .env
+
+*.db

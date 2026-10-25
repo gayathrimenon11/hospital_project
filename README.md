@@ -26,7 +26,7 @@ Make sure you have `uv` and `git` installed on your machine:
 
 Run these commands inside your `hospital_project` folder:
 
-```powershell
+```shell
 
 # Initialize uv project configuration
 uv init
@@ -44,8 +44,8 @@ Open **two separate terminal windows** in VS Code inside your `hospital_project`
 
 ### Terminal 1: Launch Backend API (FastAPI)
 
-```powershell
-uv run uvicorn main:app --reload
+```shell
+uv run uvicorn src.hospital_project.main:app --reload
 
 ```
 
@@ -53,8 +53,8 @@ uv run uvicorn main:app --reload
 
 ### Terminal 2: Launch Frontend UI (Streamlit)
 
-```powershell
-uv run streamlit run app.py
+```shell
+uv run streamlit run src\hospital_project\app.py
 
 ```
 
@@ -66,7 +66,7 @@ uv run streamlit run app.py
 
 ### 1. First-Time Repository Setup & Initial Push
 
-```powershell
+```shell
 # Initialize repository
 git init
 
@@ -89,7 +89,7 @@ git push -u origin main
 
 ### 2. Daily Workflow: Saving & Pushing Future Changes
 
-```powershell
+```shell
 # Check current status
 git status
 
@@ -110,7 +110,7 @@ git push origin main
 
 If you need to wipe local commits and push a clean single commit to GitHub:
 
-```powershell
+```shell
 # Remove existing git tracking history
 Remove-Item -Recurse -Force .git
 
