@@ -1,7 +1,8 @@
+import os
 import streamlit as st
 import requests
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 st.set_page_config(page_title="Hospital Queue System", layout="wide")
 st.title("🏥 Hospital Queue Management System")
@@ -11,7 +12,7 @@ try:
     doctors_response = requests.get(f"{API_URL}/doctors").json()
     doctors_list = doctors_response.get("doctors", [])
 except Exception:
-    st.error("Cannot connect to backend API. Please make sure FastAPI is running on http://127.0.0.1:8000")
+    st.error(f"Cannot connect to backend API at {API_URL}. Please ensure the backend is running.")
     st.stop()
 
 # Sidebar Role Switcher
