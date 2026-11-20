@@ -7,58 +7,47 @@ A full-stack Python application built for hospital workflows. Receptionists can 
 
 ## 🛠️ Project Architecture & Tech Stack
 
-* **Backend API:** FastAPI (Async Python framework) + Uvicorn (ASGI web server) + Pydantic (Data validation)
-* **Frontend UI:** Streamlit
-* **Dependency & Environment Management:** `uv` (Fast Python package manager)
+* **Frontend UI:** Streamlit (in `frontend/`)
+* **Backend API:** FastAPI + Uvicorn + Pydantic (in `backend/`)
+* **Database:** PostgreSQL 16 + SQLAlchemy ORM
+* **Containerization:** Docker & Docker Compose
+* **Package Management:** `uv`
 * **Version Control:** Git & GitHub
 
 ---
 
-## 📋 Prerequisites
+## ⚡ How to Run with Docker (Recommended)
 
-Make sure you have `uv` and `git` installed on your machine:
-* Verify `uv`: `uv --version`
-* Verify `git`: `git --version`
-
----
-
-## 📁 Project Setup Commands
-
-Run these commands inside your `hospital_project` folder:
+Make sure [Docker Desktop](https://www.docker.com/products/docker-desktop/) is running, then run:
 
 ```shell
+docker-compose up --build
+```
 
-# Initialize uv project configuration
-uv init
+- **Frontend (Streamlit UI):** [http://localhost:8501](http://localhost:8501)
+- **Backend API & Swagger Docs:** [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Database (PostgreSQL):** Running on port `5432` with data persisted in the `postgres_data` volume.
 
-# Install dependencies into local .venv environment
-uv add fastapi uvicorn streamlit requests pydantic
-
+To stop the containers:
+```shell
+docker-compose down
 ```
 
 ---
 
-## ⚡ How to Run the Application
+## 💻 Local Development (Without Docker)
 
-Open **two separate terminal windows** in VS Code inside your `hospital_project` folder:
-
-### Terminal 1: Launch Backend API (FastAPI)
-
+### 1. Backend
 ```shell
-uv run uvicorn src.hospital_project.main:app --reload
-
+cd backend
+uv run uvicorn src.main:app --reload --port 8000
 ```
 
-* **Interactive API Documentation:** `http://127.0.0.1:8000/docs`
-
-### Terminal 2: Launch Frontend UI (Streamlit)
-
+### 2. Frontend
 ```shell
-uv run streamlit run src\hospital_project\app.py
-
+cd frontend
+uv run streamlit run src/app.py --server.port 8501
 ```
-
-* **Live Web Interface:** `http://localhost:8501`
 
 ---
 
