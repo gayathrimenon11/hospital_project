@@ -38,6 +38,20 @@ def get_or_create_default_doctors(db: Session):
 
 
 # --- API Routes ---
+@app.get("/")
+def root():
+    return {
+        "message": "Hospital Queue System API is running",
+        "docs": "/docs",
+        "endpoints": {
+            "doctors": "/doctors",
+            "enqueue_patient": "POST /patients/enqueue",
+            "get_queue": "GET /queues/{doctor_name}",
+            "call_next": "POST /queues/{doctor_name}/next",
+        },
+    }
+
+
 @app.get("/doctors")
 def get_doctors(db: Session = Depends(get_db)):
     """Get list of available doctors from the database."""
